@@ -1,0 +1,17 @@
+public class Exercicio2_2 {
+    public static void main(String[] args) {
+        
+        System.out.println("x\tf(x)"); 
+        
+        for (double x = 0; x <= 1.0; x += 0.001) {
+            double f_x;
+            
+            if (x == 0) {
+                f_x = Double.NaN;
+            } else {
+                f_x = Math.pow(x, 2) + 2 * Math.sin((Math.PI + x) / Math.pow(x, 3)) + 1;
+            }
+            System.out.println(String.format("%.3f", x) + "\t" + f_x);
+        }
+    }
+}
