@@ -1,0 +1,54 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.ex2.aula2;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+/**
+ *
+ * @author giova
+ */
+
+public class Ex21Aula2 {
+    public static void main(String[] args) {
+        ArrayList<Object> lista = new ArrayList<>();
+        Random rand = new Random();
+
+        lista.add(Integer.valueOf(rand.nextInt(100)));
+        lista.add(Double.valueOf(rand.nextDouble() * 100));
+        lista.add(Float.valueOf(rand.nextFloat() * 100));
+        lista.add(Long.valueOf(rand.nextLong(100)));
+        lista.add(Short.valueOf((short) rand.nextInt(100)));
+        lista.add(Byte.valueOf((byte) rand.nextInt(100)));
+
+        int somaInteiros = 0;
+        double somaFloatDouble = 0.0;
+        int contagemFloatDouble = 0;
+        double somaTotal = 0.0;
+
+        for (Object obj : lista) {
+            
+            if (obj instanceof Integer) {
+                somaInteiros += (Integer) obj;
+            }
+            
+            if (obj instanceof Float || obj instanceof Double) {
+                somaFloatDouble += ((Number) obj).doubleValue();
+                contagemFloatDouble++;
+            }
+            
+            if (obj instanceof Number) {
+                somaTotal += ((Number) obj).doubleValue();
+            }
+        }
+
+        double mediaFloatDouble = (contagemFloatDouble > 0) ? somaFloatDouble / contagemFloatDouble : 0;
+
+        System.out.println("Soma dos Integers: " + somaInteiros);
+        System.out.println("Média dos Floats e Doubles: " + mediaFloatDouble);
+        System.out.println("Soma total de todos os valores: " + somaTotal);
+    }
+}
