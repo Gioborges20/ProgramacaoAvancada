@@ -1,0 +1,37 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.projetopascoa;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author giova
+ */
+public class ProjetoPascoa {
+
+    public static void main(String[] args) {
+        // Instancia a interface e o cálculo
+        FormPascoa tela = new FormPascoa();
+        CalculadoraModel algoritmo = new CalculadoraModel();
+
+        // Define o que o botão faz
+        tela.btnCalcular.addActionListener(e -> {
+            try {
+                int ano = Integer.parseInt(tela.txtAno.getText());
+                int[] resultado = algoritmo.calcular(ano);
+                
+                // Preenche os campos na tela
+                tela.txtDia.setText(String.valueOf(resultado[0]));
+                tela.txtMes.setText(String.valueOf(resultado[1]));
+                
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(tela, "Digite um ano válido!");
+            }
+        });
+
+        tela.setVisible(true);
+    }
+}
+
